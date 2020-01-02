@@ -1,0 +1,9 @@
+{
+  "card_name": "Gilded Goose",
+  "mana_cost": "G",
+  "keyword": "Flying",
+  "etb_effect": "When Gilded Goose enters the battlefield, create a Food token.",
+  "tap_effect": "pay 1G, Create a Food token. Sacrifice a Food: Add one mana of any color",
+  "power": 0,
+  "toughness": 2
+}
