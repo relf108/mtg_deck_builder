@@ -27,13 +27,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // DeckStorage deckStorage = new DeckStorage();
   String _url = 'lib/output-onlinepngtools.png';
-  MTGCard card;
-
-  void loadState() async {
-    //super.loadState();
-    card = await loadCardDB();
-    card.printCard();
-  }
 
   Widget deckIcon(String name) {
     return Column(children: <Widget>[
@@ -75,23 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: getDeckIcons()))
         ]));
     // displayDecks());
-  }
-
-  Future<MTGCard> loadCardDB() async {
-    String cardDB = await _loadCardDB();
-
-    return _parseJsonForCardDB(cardDB);
-    //if you just print cardDB here it returns what i want but i cant return cardDb as a string without it printing "Instance of 'Future<dynamic>'".
-  }
-
-  MTGCard _parseJsonForCardDB(String jsonString) {
-    Map decoded = jsonDecode(jsonString);
-
-    return MTGCard.fromJson(decoded);
-  }
-
-  Future<String> _loadCardDB() async {
-    return await rootBundle.loadString('../cardDB.json');
   }
 
   List<Widget> getDeckIcons() {
