@@ -11,14 +11,28 @@ import 'package:mtg_deck_builder_mobile/Objects/deck.dart';
 import '../StorageObjects/deckStorage.dart';
 
 class DeckBuilder extends StatefulWidget {
+
+ Deck deck = new Deck();
+
+ DeckBuilder(Deck newDeck){
+  deck = newDeck;
+ }
+
   @override
-  _DeckBuilderState createState() => _DeckBuilderState();
+  _DeckBuilderState createState() => _DeckBuilderState(deck);
+
+
 }
 
 class _DeckBuilderState extends State<DeckBuilder> {
   Deck newDeck = new Deck();
 
+  _DeckBuilderState(Deck deck){
+    newDeck = deck;
+  }
+
   final textController = TextEditingController();
+
 
   @override
   void dispose() {
@@ -94,7 +108,9 @@ class _DeckBuilderState extends State<DeckBuilder> {
                 return Stack /*stacks can take children while containers cant*/ (
                   children: [
                     Container(
-                      child: Text("Enter Deck name here"),
+                      child: Text("Enter Deck name here",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 25)),
                       padding: EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 15.0),
                     ),
                     Container(
@@ -102,12 +118,21 @@ class _DeckBuilderState extends State<DeckBuilder> {
                         controller: textController,
                         autocorrect: true,
                       ),
-                      padding: EdgeInsets.fromLTRB(30.0, 70.0, 30.0, 15.0),
+                      padding: EdgeInsets.fromLTRB(30.0, 70.0, 30.0, 120.0),
                     ),
                     Container(
-                       child: Wrap(children: buildCardButtons(cardList))
-                    )
-                   ,
+                        child:
+                            CustomScrollView(primary: false, slivers: <Widget>[
+                      SliverPadding(
+                          padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                          sliver: SliverGrid.count(
+                              crossAxisSpacing: 0,
+                              mainAxisSpacing: 0,
+                              crossAxisCount: 1,
+                              children: buildCardButtons(cardList))),
+                    ]),
+                    padding: EdgeInsets.fromLTRB(30.0, 120.0, 30.0, 15.0)
+                    ),
                     new Container(
                       alignment: Alignment.bottomLeft,
                       child: new RaisedButton(
@@ -121,13 +146,26 @@ class _DeckBuilderState extends State<DeckBuilder> {
                       alignment: Alignment.bottomRight,
                       child: new RaisedButton(
                         onPressed: () {
-                          if (textController.text.toString() != "") {
+                          if ((textController.text.toString() != "") && (newDeck.getName() == null)) {
                             newDeck.name = textController.text.toString();
-                          } else {
-                            newDeck.name = "Unnamed Deck";
+                            DeckStorage.decks.add(newDeck);
+                            Navigator.pop(context);
                           }
-                          DeckStorage.decks.add(newDeck);
-                          Navigator.pop(context);
+                          else if((textController.text.toString() != "") && newDeck.getName() != null){
+                            //Do nothing
+                            newDeck.name = textController.text.toString();
+                            Navigator.pop(context);
+                          }
+                          else if((textController.text.toString() == "") && newDeck.getName() != null){
+                            //Do nothing
+                            Navigator.pop(context);
+                          }
+                          else if((newDeck.getName() == null) && (textController.text.toString() == "")) {
+                            newDeck.name = "Unnamed Deck";
+                            DeckStorage.decks.add(newDeck);
+                            Navigator.pop(context);
+                          }
+
                         },
                         child: new Text(
                             "Done"), //this button needs to return deck data to main
@@ -156,13 +194,25 @@ class _DeckBuilderState extends State<DeckBuilder> {
   Widget cardButton(List<MTGCard> cardList, int i) {
     return Container(
       child: FlatButton(
-        child: Text(cardList[i].cardName),
+        child: Text(cardList[i].cardName +
+            "\n Mana cost: " +
+            cardList[i].manaCost +
+            "\n Keywords: " +
+            cardList[i].keyword +
+            "\n Effects: " +
+            cardList[i].etbEffect +
+            " " +
+            cardList[i].tapEffect +
+            "\n Power/Toughness: " +
+            cardList[i].power.toString() +
+            "/" +
+            cardList[i].toughness.toString()),
         onPressed: () {
           newDeck.addCard(cardList[i]);
         },
         color: Color.fromARGB(100, 34, 139, 34),
       ),
-      padding: EdgeInsets.fromLTRB(30.0, 200.0, 30.0, 15.0),
+      padding: EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 15.0),
     );
   }
 }

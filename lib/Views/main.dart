@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mtg_deck_builder_mobile/Objects/deck.dart';
 import 'package:mtg_deck_builder_mobile/StorageObjects/deckStorage.dart';
 
 import '../StorageObjects/deckStorage.dart';
@@ -24,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // DeckStorage deckStorage = new DeckStorage();
   String _url = 'lib/output-onlinepngtools.png';
 
-  Widget deckIcon(String name) {
+  Widget deckIcon(Deck deck, String name) {
     return Column(children: <Widget>[
       Container(
           padding: EdgeInsets.fromLTRB(0.0, 15.0, 15.0, 15.0),
@@ -36,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                Center(child: DeckBuilder())));
+                                Center(child: DeckBuilder(deck))));
                   },
                   child: Image.asset(_url)))),
       Container(
@@ -71,10 +72,10 @@ class _MyHomePageState extends State<MyHomePage> {
     int i = 0;
     while (i <= DeckStorage.decks.length) {
       if (i != 0) {
-        Widget newDeckIcon = deckIcon(DeckStorage.decks[i - 1].getName());
+        Widget newDeckIcon = deckIcon(DeckStorage.decks[i - 1], DeckStorage.decks[i - 1].getName());
         deckIconList.add(newDeckIcon);
       } else {
-        Widget newDeckIcon = deckIcon("Add deck");
+        Widget newDeckIcon = deckIcon(new Deck(), "Add deck");
         deckIconList.add(newDeckIcon);
       }
       i++;

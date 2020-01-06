@@ -15,7 +15,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="RF8M229P9XH" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_29" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -86,7 +86,9 @@
       <workItem from="1577928972531" duration="21285000" />
       <workItem from="1577968330370" duration="8465000" />
       <workItem from="1578003037417" duration="3066000" />
-      <workItem from="1578006187470" duration="6343000" />
+      <workItem from="1578006187470" duration="6555000" />
+      <workItem from="1578030355577" duration="623000" />
+      <workItem from="1578277546255" duration="4812000" />
     </task>
     <servers />
   </component>
@@ -110,22 +112,22 @@
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
     <state x="744" y="284" key="FileChooserDialogImpl/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578005639039" />
-    <state width="1874" height="278" key="GridCell.Tab.0.bottom" timestamp="1578012219171">
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom" timestamp="1578283400840">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578012219171" />
-    <state width="1874" height="278" key="GridCell.Tab.0.center" timestamp="1578012219171">
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578283400840" />
+    <state width="1874" height="278" key="GridCell.Tab.0.center" timestamp="1578283400840">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.center/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578012219171" />
-    <state width="1874" height="278" key="GridCell.Tab.0.left" timestamp="1578012219171">
+    <state width="1874" height="278" key="GridCell.Tab.0.center/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578283400840" />
+    <state width="1874" height="278" key="GridCell.Tab.0.left" timestamp="1578283400840">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.left/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578012219171" />
-    <state width="1874" height="278" key="GridCell.Tab.0.right" timestamp="1578012219171">
+    <state width="1874" height="278" key="GridCell.Tab.0.left/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578283400840" />
+    <state width="1874" height="278" key="GridCell.Tab.0.right" timestamp="1578283400840">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
-    <state width="1874" height="278" key="GridCell.Tab.0.right/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578012219171" />
+    <state width="1874" height="278" key="GridCell.Tab.0.right/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578283400840" />
     <state width="1874" height="236" key="GridCell.Tab.1.bottom" timestamp="1577976795727">
       <screen x="0" y="0" width="1920" height="1048" />
     </state>
@@ -161,12 +163,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/Views/deck_builder.dart</url>
-          <line>17</line>
+          <line>26</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/Views/deck_builder.dart</url>
-          <line>59</line>
+          <line>73</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
