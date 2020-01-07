@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../StorageObjects/emailStorage.dart';
 
 class Setup extends StatefulWidget {
@@ -13,6 +14,7 @@ class Setup extends StatefulWidget {
 
 class _SetupState extends State<Setup> {
   String email;
+
   String getEmail() {
     if (textController.text.toString() != "") {
       email = textController.text.toString();
@@ -32,24 +34,30 @@ class _SetupState extends State<Setup> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(children: <Widget>[
+        body: Stack(children: <Widget>[
           Container(
-            child: TextField(
-              controller: textController,
-              autocorrect: true,
-            ),
-            padding: EdgeInsets.fromLTRB(30.0, 70.0, 30.0, 120.0),
+            child: Text("Enter Your email below",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 25)),
+            padding: EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 15.0),
           ),
-
-          Container(
-            child: FlatButton(
-              onPressed: () {
-                EmailStorage.email = getEmail();
-                Navigator.pop(context);
-              },
-            ),
-          )]));
+      Container(
+        child: TextField(
+          controller: textController,
+          autocorrect: true,
+        ),
+        padding: EdgeInsets.fromLTRB(30.0, 70.0, 30.0, 120.0),
+      ),
+      Container(
+        alignment: Alignment.bottomRight,
+        child: RaisedButton(
+          onPressed: () {
+            EmailStorage.email = getEmail();
+            Navigator.pop(context);
+          },
+          child: new Text("Done"),
+        ),
+      )
+    ]));
   }
-
-
 }

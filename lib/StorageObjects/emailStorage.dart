@@ -1,7 +1,3 @@
-class EmailStorage{
-  static String email;
-
-  getEmail(){
-    return email;
-  }
+class EmailStorage {
+  static String email = "";
 }

@@ -31,9 +31,19 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          actions: <Widget>[
+            Container(
+                child: FloatingActionButton(
+                    child: Icon(Icons.settings),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Setup()),
+                      );
+                    }))
+          ],
         ),
-        body: Stack(
-            children: <Widget>[
+        body: Stack(children: <Widget>[
           CustomScrollView(primary: false, slivers: <Widget>[
             SliverPadding(
                 padding: const EdgeInsets.all(10),
@@ -43,16 +53,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     crossAxisCount: 2,
                     children: getDeckIcons()))
           ]),
-              Container(
-                  child: FloatingActionButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Setup()),
-                        );
-                      }
-                  )
-              )
         ]));
     // displayDecks());
   }

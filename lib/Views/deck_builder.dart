@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 import 'package:mtg_deck_builder_mobile/Objects/card.dart';
 import 'package:mtg_deck_builder_mobile/Objects/deck.dart';
+import 'package:mtg_deck_builder_mobile/StorageObjects/emailStorage.dart';
 import 'package:mtg_deck_builder_mobile/Widgets/cardButton.dart';
 
 import '../StorageObjects/deckStorage.dart';
@@ -128,7 +131,47 @@ class _DeckBuilderState extends State<DeckBuilder> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: new Text("Back"),
+                        child: new Text("Cancel"),
+                      ),
+                    ),
+                    new Container(
+                      alignment: Alignment.bottomCenter,
+                      child: new RaisedButton(
+                        onPressed: () async {
+                          if(EmailStorage.email != "") {
+                            final String password = 'XX3ixh\\S?<g5';
+                            final smtpServer =
+                            gmail(
+                                'mtg.deck.builder.mobile@gmail.com', password);
+                            final message = Message();
+                            message.from =
+                                Address('mtg.deck.builder.mobile@gmail.com',
+                                    'MTG Deck builder');
+                            message.recipients.add(EmailStorage.email);
+                            message.subject =
+                            'Test Dart Mailer library :: 😀 :: ${DateTime
+                                .now()}';
+                            message.text =
+                            'This is the plain text.\nThis is line 2 of the text part.';
+                            try {
+                              final sendReport = await send(
+                                  message, smtpServer);
+                              print('Message sent: ' + sendReport.toString());
+                            } on MailerException catch (e) {
+                              print('Message not sent.');
+                              for (var p in e.problems) {
+                                print('Problem: ${p.code}: ${p.msg}');
+                              }
+                            }
+
+                            Navigator.pop(context);
+                          }
+                          else{
+                            print("Enter email");
+                            Navigator.pop(context);
+                          }
+                          },
+                        child: new Text("Export deck"),
                       ),
                     ),
                     new Container(
