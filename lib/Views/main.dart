@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_deck_builder_mobile/Objects/deck.dart';
 import 'package:mtg_deck_builder_mobile/StorageObjects/deckStorage.dart';
+import 'package:mtg_deck_builder_mobile/Views/setup.dart';
+import 'package:mtg_deck_builder_mobile/Widgets/deckIcon.dart';
 
 import '../StorageObjects/deckStorage.dart';
-import 'deck_builder.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -22,30 +23,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // DeckStorage deckStorage = new DeckStorage();
-  String _url = 'lib/output-onlinepngtools.png';
-
-  Widget deckIcon(Deck deck, String name) {
-    return Column(children: <Widget>[
-      Container(
-          padding: EdgeInsets.fromLTRB(0.0, 15.0, 15.0, 15.0),
-          child: ConstrainedBox(
-              constraints: BoxConstraints.expand(width: 120.0, height: 120.0),
-              child: FlatButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                Center(child: DeckBuilder(deck))));
-                  },
-                  child: Image.asset(_url)))),
-      Container(
-          // constraints: BoxConstraints.expand(width: 20.0, height: 20.0),
-          child: Text(name))
-    ]);
-  }
-
   @override
   Widget build(BuildContext context) {
 //    print(loadCardDB()); //Why does this return "Instance of 'Future<dynamic>'" instead of a card object?
@@ -55,14 +32,27 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: CustomScrollView(primary: false, slivers: <Widget>[
-          SliverPadding(
-              padding: const EdgeInsets.all(10),
-              sliver: SliverGrid.count(
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  crossAxisCount: 2,
-                  children: getDeckIcons()))
+        body: Stack(
+            children: <Widget>[
+          CustomScrollView(primary: false, slivers: <Widget>[
+            SliverPadding(
+                padding: const EdgeInsets.all(10),
+                sliver: SliverGrid.count(
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    crossAxisCount: 2,
+                    children: getDeckIcons()))
+          ]),
+              Container(
+                  child: FloatingActionButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Setup()),
+                        );
+                      }
+                  )
+              )
         ]));
     // displayDecks());
   }
@@ -72,10 +62,11 @@ class _MyHomePageState extends State<MyHomePage> {
     int i = 0;
     while (i <= DeckStorage.decks.length) {
       if (i != 0) {
-        Widget newDeckIcon = deckIcon(DeckStorage.decks[i - 1], DeckStorage.decks[i - 1].getName());
+        Widget newDeckIcon = new DeckIcon(
+            DeckStorage.decks[i - 1], DeckStorage.decks[i - 1].getName());
         deckIconList.add(newDeckIcon);
       } else {
-        Widget newDeckIcon = deckIcon(new Deck(), "Add deck");
+        Widget newDeckIcon = new DeckIcon(new Deck(), "Add deck");
         deckIconList.add(newDeckIcon);
       }
       i++;

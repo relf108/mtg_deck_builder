@@ -7,36 +7,32 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mtg_deck_builder_mobile/Objects/card.dart';
 import 'package:mtg_deck_builder_mobile/Objects/deck.dart';
+import 'package:mtg_deck_builder_mobile/Widgets/cardButton.dart';
 
 import '../StorageObjects/deckStorage.dart';
 
 class DeckBuilder extends StatefulWidget {
+  Deck deck;
 
- Deck deck = new Deck();
-
- DeckBuilder(Deck newDeck){
-  deck = newDeck;
- }
+  DeckBuilder(Deck newDeck) {
+    deck = newDeck;
+  }
 
   @override
   _DeckBuilderState createState() => _DeckBuilderState(deck);
-
-
 }
 
 class _DeckBuilderState extends State<DeckBuilder> {
   Deck newDeck = new Deck();
 
-  _DeckBuilderState(Deck deck){
+  _DeckBuilderState(Deck deck) {
     newDeck = deck;
   }
 
   final textController = TextEditingController();
 
-
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     textController.dispose();
     super.dispose();
   }
@@ -60,14 +56,9 @@ class _DeckBuilderState extends State<DeckBuilder> {
     String cardDB = await _loadCardDB();
 
     return _parseJsonForCardDB(cardDB);
-    //if you just print cardDB here it returns what i want but i cant return cardDb as a string without it printing "Instance of 'Future<dynamic>'".
   }
 
   List<MTGCard> _parseJsonForCardDB(String jsonString) {
-    /*Map decoded = jsonDecode(jsonString);
-     MTGCard card = MTGCard.fromJson(decoded);*/
-
-    //List<MTGCard> cardList = json.decode(jsonString).map((Map m)=> MTGCard.fromJson(m)).toList();
     return iterateJson(jsonString);
   }
 
@@ -76,7 +67,6 @@ class _DeckBuilderState extends State<DeckBuilder> {
     List<dynamic> myMap = json.decode(jsonStr);
     int i = 0;
     while (i < myMap.length) {
-      //MTGCard newCards = new MTGCard(myMap[i][0], myMap[i][1], myMap[i][2], myMap[i][3], myMap[i][4], myMap[i][5], myMap[i][6]);
       MTGCard newCard = MTGCard.fromJson(myMap[i]);
       cards.add(newCard);
       i++;
@@ -123,16 +113,15 @@ class _DeckBuilderState extends State<DeckBuilder> {
                     Container(
                         child:
                             CustomScrollView(primary: false, slivers: <Widget>[
-                      SliverPadding(
-                          padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-                          sliver: SliverGrid.count(
-                              crossAxisSpacing: 0,
-                              mainAxisSpacing: 0,
-                              crossAxisCount: 1,
-                              children: buildCardButtons(cardList))),
-                    ]),
-                    padding: EdgeInsets.fromLTRB(30.0, 120.0, 30.0, 15.0)
-                    ),
+                          SliverPadding(
+                              padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                              sliver: SliverGrid.count(
+                                  crossAxisSpacing: 0,
+                                  mainAxisSpacing: 0,
+                                  crossAxisCount: 1,
+                                  children: buildCardButtons(cardList))),
+                        ]),
+                        padding: EdgeInsets.fromLTRB(30.0, 120.0, 30.0, 15.0)),
                     new Container(
                       alignment: Alignment.bottomLeft,
                       child: new RaisedButton(
@@ -146,26 +135,26 @@ class _DeckBuilderState extends State<DeckBuilder> {
                       alignment: Alignment.bottomRight,
                       child: new RaisedButton(
                         onPressed: () {
-                          if ((textController.text.toString() != "") && (newDeck.getName() == null)) {
+                          if ((textController.text.toString() != "") &&
+                              (newDeck.getName() == null)) {
                             newDeck.name = textController.text.toString();
                             DeckStorage.decks.add(newDeck);
                             Navigator.pop(context);
-                          }
-                          else if((textController.text.toString() != "") && newDeck.getName() != null){
+                          } else if ((textController.text.toString() != "") &&
+                              newDeck.getName() != null) {
                             //Do nothing
                             newDeck.name = textController.text.toString();
                             Navigator.pop(context);
-                          }
-                          else if((textController.text.toString() == "") && newDeck.getName() != null){
+                          } else if ((textController.text.toString() == "") &&
+                              newDeck.getName() != null) {
                             //Do nothing
                             Navigator.pop(context);
-                          }
-                          else if((newDeck.getName() == null) && (textController.text.toString() == "")) {
+                          } else if ((newDeck.getName() == null) &&
+                              (textController.text.toString() == "")) {
                             newDeck.name = "Unnamed Deck";
                             DeckStorage.decks.add(newDeck);
                             Navigator.pop(context);
                           }
-
                         },
                         child: new Text(
                             "Done"), //this button needs to return deck data to main
@@ -183,36 +172,11 @@ class _DeckBuilderState extends State<DeckBuilder> {
     List<Widget> cardButtonList = new List<Widget>();
     int i = 0;
     while (i < cardList.length) {
-      Widget newCardButton = cardButton(cardList, i);
+      Widget newCardButton = new CardButton(cardList, i, newDeck);
       cardButtonList.add(newCardButton);
       i++;
     }
 
     return cardButtonList;
-  }
-
-  Widget cardButton(List<MTGCard> cardList, int i) {
-    return Container(
-      child: FlatButton(
-        child: Text(cardList[i].cardName +
-            "\n Mana cost: " +
-            cardList[i].manaCost +
-            "\n Keywords: " +
-            cardList[i].keyword +
-            "\n Effects: " +
-            cardList[i].etbEffect +
-            " " +
-            cardList[i].tapEffect +
-            "\n Power/Toughness: " +
-            cardList[i].power.toString() +
-            "/" +
-            cardList[i].toughness.toString()),
-        onPressed: () {
-          newDeck.addCard(cardList[i]);
-        },
-        color: Color.fromARGB(100, 34, 139, 34),
-      ),
-      padding: EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 15.0),
-    );
   }
 }
