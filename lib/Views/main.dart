@@ -3,10 +3,13 @@ import 'package:mtg_deck_builder_mobile/Objects/deck.dart';
 import 'package:mtg_deck_builder_mobile/StorageObjects/deckStorage.dart';
 import 'package:mtg_deck_builder_mobile/Views/setup.dart';
 import 'package:mtg_deck_builder_mobile/Widgets/deckIcon.dart';
-
+import 'package:sqflite/sqflite.dart';
+import '../StorageObjects/deckDAO.dart';
 import '../StorageObjects/deckStorage.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  DeckDAO().createDB();
   runApp(MaterialApp(
     title: 'MTGA Mobile deck builder',
     home: MyHomePage(title: 'MTGA Mobile Deck Builder'),
@@ -23,6 +26,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+
   @override
   Widget build(BuildContext context) {
 //    print(loadCardDB()); //Why does this return "Instance of 'Future<dynamic>'" instead of a card object?

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
+import '../StorageObjects/deckDAO.dart';
 
 import '../StorageObjects/emailStorage.dart';
 
@@ -32,6 +34,20 @@ class _SetupState extends State<Setup> {
     super.dispose();
   }
 
+  insert() async {
+    // Get a location using getDatabasesPath
+    Database database = DeckDAO.database;
+    await database.transaction((txn) async {
+     await txn.rawInsert(
+          'INSERT INTO Test(deckName, cardsNum) VALUES("Azorius control", 60)');
+    });
+    
+// Get the records
+    List<Map> list = await database.rawQuery('SELECT * FROM Test');
+    print(list);
+
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(children: <Widget>[
@@ -52,6 +68,7 @@ class _SetupState extends State<Setup> {
         alignment: Alignment.bottomRight,
         child: RaisedButton(
           onPressed: () {
+            insert();
             EmailStorage.email = getEmail();
             Navigator.pop(context);
           },

@@ -1,18 +1,19 @@
 class MTGCard {
-  String cardName;
+  String name; //name
   String manaCost;
-  String keyword;
-  String etbEffect;
-  String tapEffect;
-  int power;
-  int toughness;
+  String text;
+  String keyword; //text
+  String etbEffect; //text
+  String tapEffect; //text
+  String power;
+  String toughness;
 
-  MTGCard(this.cardName, this.manaCost, this.keyword, this.etbEffect,
+  MTGCard(this.name, this.manaCost, this.keyword, this.etbEffect,
       this.tapEffect, this.power, this.toughness);
 
   MTGCard.fromJson(Map<String, dynamic> json) {
-    cardName = json['card_name'];
-    manaCost = json['mana_cost'];
+    name = json['name'];
+    manaCost = json['manaCost'];
     keyword = json['keyword'];
     etbEffect = json['etb_effect'];
     tapEffect = json['tap_effect'];
@@ -22,8 +23,8 @@ class MTGCard {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['card_name'] = this.cardName;
-    data['mana_cost'] = this.manaCost;
+    data['name'] = this.name;
+    data['manaCost'] = this.manaCost;
     data['keyword'] = this.keyword;
     data['etb_effect'] = this.etbEffect;
     data['tap_effect'] = this.tapEffect;
@@ -34,7 +35,7 @@ class MTGCard {
 
   void printCard() async {
     print(
-        cardName); //Why does this return "Instance of 'Future<dynamic>'" instead of a card object?
+        name); //Why does this return "Instance of 'Future<dynamic>'" instead of a card object?
     // now returning instance of MTG card
   }
 }

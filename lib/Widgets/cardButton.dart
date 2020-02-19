@@ -21,9 +21,9 @@ class CardButton extends StatelessWidget {
   Widget cardButton(List<MTGCard> cardList, int i, Deck deck) {
     return Container(
       child: FlatButton(
-        child: Text(cardList[i].cardName +
+        child: Text(cardList[i].name/* +
             "\n Mana cost: " +
-            cardList[i].manaCost +
+            cardList[i].manaCost *//*+
             "\n Keywords: " +
             cardList[i].keyword +
             "\n Effects: " +
@@ -33,7 +33,7 @@ class CardButton extends StatelessWidget {
             "\n Power/Toughness: " +
             cardList[i].power.toString() +
             "/" +
-            cardList[i].toughness.toString()),
+            cardList[i].toughness.toString()*/),
         onPressed: () {
           deck.addCard(cardList[i]);
         },

@@ -22,7 +22,7 @@ class Deck {
   removeCard(String cardName) {
     int i = 0;
     while (i >= cards.length) {
-      if (cards[i].cardName == cardName) {
+      if (cards[i].name == cardName) {
         cards.remove([i]);
       } else {
         i++;
