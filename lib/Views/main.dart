@@ -9,6 +9,10 @@ import '../StorageObjects/deckStorage.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  var deleteDB = true;
+  if (deleteDB){
+    DeckDAO().deleteDB();
+  }
   DeckDAO().createDB();
   runApp(MaterialApp(
     title: 'MTGA Mobile deck builder',
