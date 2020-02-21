@@ -9,7 +9,7 @@ import '../StorageObjects/deckStorage.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  var deleteDB = true;
+  var deleteDB = false;
   if (deleteDB){
     DeckDAO().deleteDB();
   }

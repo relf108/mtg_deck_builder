@@ -57,4 +57,11 @@ class DeckDAO{
   Future<void> deleteDB() async {
     await deleteDatabase(path);
   }
+
+  Future<String> getEmail() async{
+    List<Map> list = await database.rawQuery('SELECT email FROM Email');
+    String email = list[0].toString();
+    String emailTrim = email.substring(8, email.length -1);
+    return emailTrim;
+  }
 }

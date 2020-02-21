@@ -9,6 +9,7 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:mtg_deck_builder_mobile/Objects/card.dart';
 import 'package:mtg_deck_builder_mobile/Objects/deck.dart';
+import 'package:mtg_deck_builder_mobile/StorageObjects/deckDAO.dart';
 import 'package:mtg_deck_builder_mobile/StorageObjects/emailStorage.dart';
 import 'package:mtg_deck_builder_mobile/Widgets/cardButton.dart';
 
@@ -138,8 +139,11 @@ class _DeckBuilderState extends State<DeckBuilder> {
                       alignment: Alignment.bottomCenter,
                       child: new RaisedButton(
                         onPressed: () async {
-                          if(EmailStorage.email != "") {
-                            final String password = 'XX3ixh\\S?<g5';
+                          DeckDAO db = new DeckDAO();
+                          String email = await db.getEmail();
+                          print(email);
+                          if(email != null) {
+                            final String password = r'XX3ixh\S?<g5';
                             final smtpServer =
                             gmail(
                                 'mtg.deck.builder.mobile@gmail.com', password);
@@ -147,7 +151,7 @@ class _DeckBuilderState extends State<DeckBuilder> {
                             message.from =
                                 Address('mtg.deck.builder.mobile@gmail.com',
                                     'MTG Deck builder');
-                            message.recipients.add(EmailStorage.email);
+                            message.recipients.add(email);
                             message.subject =
                             'Test Dart Mailer library :: 😀 :: ${DateTime
                                 .now()}';
