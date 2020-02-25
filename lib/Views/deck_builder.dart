@@ -181,11 +181,13 @@ class _DeckBuilderState extends State<DeckBuilder> {
                     new Container(
                       alignment: Alignment.bottomRight,
                       child: new RaisedButton(
-                        onPressed: () {
+                        onPressed: () async {
+                          DeckDAO db = new DeckDAO();
                           if ((textController.text.toString() != "") &&
                               (newDeck.getName() == null)) {
                             newDeck.name = textController.text.toString();
                             DeckStorage.decks.add(newDeck);
+                            db.addDeck(newDeck, newDeck.cards.length);
                             Navigator.pop(context);
                           } else if ((textController.text.toString() != "") &&
                               newDeck.getName() != null) {
@@ -202,6 +204,7 @@ class _DeckBuilderState extends State<DeckBuilder> {
                             DeckStorage.decks.add(newDeck);
                             Navigator.pop(context);
                           }
+                          print(await db.getDecks());
                         },
                         child: new Text(
                             "Done"), //this button needs to return deck data to main
