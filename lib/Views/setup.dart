@@ -34,12 +34,12 @@ class _SetupState extends State<Setup> {
     super.dispose();
   }
 
-  insert(String email) async {
+  void insert(String email) async {
     // Get a location using getDatabasesPath
     Database database = DeckDAO.database;
     await database.transaction((txn) async {
      await txn.rawInsert(
-          'INSERT INTO Email(email) VALUES(?)',[email]);
+          'INSERT INTO Email(email) VALUES(?)',<String>[email]);
     });
     
 // Get the records
@@ -72,7 +72,7 @@ class _SetupState extends State<Setup> {
             EmailStorage.email = getEmail();
             Navigator.pop(context);
           },
-          child: new Text("Done"),
+          child:  Text("Done"),
         ),
       )
     ]));

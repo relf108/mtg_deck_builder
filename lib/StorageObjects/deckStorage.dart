@@ -1,5 +1,4 @@
-import '../Objects/deck.dart';
-
+import 'package:mtg_deck_builder_mobile/object/deck.dart';
 class DeckStorage {
-  static List<Deck> decks = new List<Deck>();
+  static List<Deck> decks = List<Deck>();
 }

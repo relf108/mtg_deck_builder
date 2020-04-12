@@ -1,7 +1,6 @@
 import 'dart:async';
-import 'dart:io';
-
-import 'package:mtg_deck_builder_mobile/Objects/deck.dart';
+import 'package:mtg_deck_builder_mobile/object/deck.dart';
+import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 
@@ -9,7 +8,7 @@ class DeckDAO{
   static DeckDAO _self = DeckDAO._internal();
   static Database database;
   static String databasePath;
-  String path = "";
+  String path;
 
   var initialised = Completer<String>();
 
@@ -18,13 +17,13 @@ class DeckDAO{
   }
 
   void createDB() async {
-    openDB(path);
+    openDB();
 
     //await deleteDatabase(path);
 
 // open the database
   }
-  openDB( String path) async {
+  void openDB() async {
 
     await initialised.future;
     Database databaseTemp = await openDatabase(path, version: 1,
@@ -46,7 +45,7 @@ class DeckDAO{
 
   DeckDAO._internal() {
      initPath().then((_) {
-       path = (databasePath + 'deck.db');
+       path = join(databasePath, 'deck.db');
        initialised.complete(path);
      });
   }
@@ -60,11 +59,11 @@ class DeckDAO{
   }
 
   Future<void> addDeck(Deck deck, int cardsNum) async {
-    database.execute('CREATE TABLE Cards (cardName TEXT)');
+    await database.execute('CREATE TABLE Cards (cardName TEXT)');
     for (int i = 0; i <= cardsNum; i++){
       await database.transaction((txn) async {
         await txn.rawInsert(
-            'INSERT INTO Cards(cardName) VALUES(?)',[deck.cards[i].name]);
+            'INSERT INTO Cards(cardName) VALUES(?)',<String>[deck.cards[i].name]);
       });
     }
 

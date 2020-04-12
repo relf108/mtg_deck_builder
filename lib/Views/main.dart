@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_deck_builder_mobile/Objects/deck.dart';
 import 'package:mtg_deck_builder_mobile/StorageObjects/deckStorage.dart';
 import 'package:mtg_deck_builder_mobile/Views/setup.dart';
 import 'package:mtg_deck_builder_mobile/Widgets/deckIcon.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:mtg_deck_builder_mobile/object/deck.dart';
 import '../StorageObjects/deckDAO.dart';
 import '../StorageObjects/deckStorage.dart';
 
@@ -45,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: FloatingActionButton(
                     child: Icon(Icons.settings),
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.push<void>(
                         context,
                         MaterialPageRoute(builder: (context) => Setup()),
                       );
@@ -67,15 +66,15 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   List<Widget> getDeckIcons() {
-    List<Widget> deckIconList = new List<Widget>();
+    List<Widget> deckIconList =  List<Widget>();
     int i = 0;
     while (i <= DeckStorage.decks.length) {
       if (i != 0) {
-        Widget newDeckIcon = new DeckIcon(
+        Widget newDeckIcon =  DeckIcon(
             DeckStorage.decks[i - 1], DeckStorage.decks[i - 1].getName());
         deckIconList.add(newDeckIcon);
       } else {
-        Widget newDeckIcon = new DeckIcon(new Deck(), "Add deck");
+        Widget newDeckIcon =  DeckIcon( Deck(), "Add deck");
         deckIconList.add(newDeckIcon);
       }
       i++;

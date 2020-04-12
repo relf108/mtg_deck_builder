@@ -19,6 +19,8 @@ environment:
 dependencies:
   mailer: ^3.0.4
   sqflite: ^1.2.0
+  path: ^1.6.4
+  pedantic: ^1.8.0
   flutter:
     sdk: flutter
 
@@ -39,6 +41,7 @@ flutter:
   assets:
     - lib/output-onlinepngtools.png
     - lib/cardDB.json
+    - assets/standard_cards.json
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

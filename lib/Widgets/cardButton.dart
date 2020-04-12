@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_deck_builder_mobile/Objects/card.dart';
-import 'package:mtg_deck_builder_mobile/Objects/deck.dart';
-
+import 'package:mtg_deck_builder_mobile/object/card/mtg_card.dart';
+import 'package:mtg_deck_builder_mobile/object/deck.dart';
+@immutable
 class CardButton extends StatelessWidget {
-  List<MTGCard> cardList;
-  int i;
-  Deck deck;
+  final MTGCard card;
+  final Deck deck;
 
-  CardButton(List<MTGCard> newCardList, int newInt, Deck newDeck) {
-    cardList = newCardList;
-    i = newInt;
-    deck = newDeck;
-  }
+  CardButton(this.card, this.deck);
 
   @override
   Widget build(BuildContext context) {
-    return cardButton(cardList, i, deck);
+    return cardButton();
   }
 
-  Widget cardButton(List<MTGCard> cardList, int i, Deck deck) {
+  Widget cardButton() {
     return Container(
       child: FlatButton(
-        child: Text(cardList[i].name/* +
+        child: Text(card.name/* +
             "\n Mana cost: " +
             cardList[i].manaCost *//*+
             "\n Keywords: " +
@@ -35,7 +30,7 @@ class CardButton extends StatelessWidget {
             "/" +
             cardList[i].toughness.toString()*/),
         onPressed: () {
-          deck.addCard(cardList[i]);
+          deck.addCard(card);
         },
         color: Color.fromARGB(100, 34, 139, 34),
       ),
