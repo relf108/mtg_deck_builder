@@ -4,33 +4,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a29397c2-c9e1-4557-b431-64ed3c9d32f5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/standard_cards.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/object/card.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/object/card/foreign_datas.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/object/card/legalities.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/object/card/mtg_card.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/object/card/purchase_urls.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/object/card/rulings.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/object/card/subtypes.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/object/card/supertypes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Objects/card.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Objects/deck.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/object/deck.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/StorageObjects/deckDAO.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/StorageObjects/deckDAO.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/StorageObjects/deckStorage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/StorageObjects/deckStorage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/deck_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/deck_builder.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/setup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/setup.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Widgets/cardButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Widgets/cardButton.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Widgets/deckIcon.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Widgets/deckIcon.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="a29397c2-c9e1-4557-b431-64ed3c9d32f5" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,6 +110,7 @@
       <workItem from="1585114925072" duration="1368000" />
       <workItem from="1586647122974" duration="5987000" />
       <workItem from="1586653182519" duration="2762000" />
+      <workItem from="1587782019467" duration="35000" />
     </task>
     <servers />
   </component>
@@ -176,28 +151,24 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1868" height="343" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1582253114220" />
-    <state width="1874" height="422" key="GridCell.Tab.0.bottom/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578456358001" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.-10.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586655945877" />
     <state width="1870" height="365" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1582590264099" />
     <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1586655945877">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1868" height="343" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1582253114220" />
-    <state width="1874" height="422" key="GridCell.Tab.0.center/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578456358001" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/1920.-10.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586655945877" />
     <state width="1870" height="365" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1582590264099" />
     <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1586655945877">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1868" height="343" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1582253114220" />
-    <state width="1874" height="422" key="GridCell.Tab.0.left/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578456358001" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/1920.-10.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586655945877" />
     <state width="1870" height="365" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1582590264099" />
     <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1586655945877">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1868" height="343" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1582253114220" />
-    <state width="1874" height="422" key="GridCell.Tab.0.right/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578456358001" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/1920.-10.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586655945877" />
     <state width="1870" height="365" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1582590264099" />
     <state x="444" y="103" key="SettingsEditor" timestamp="1585115155979">
@@ -213,14 +184,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="521" y="255" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/1920.-10.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1586654541979" />
-    <state x="2100" y="0" width="1557" height="1008" maximized="true" key="dock-window-1" timestamp="1578456130701">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2100" y="0" width="1557" height="1008" maximized="true" key="dock-window-1/0.0.1920.1048/1920.0.1920.1080@0.0.1920.1048" timestamp="1578456130701" />
-    <state x="287" y="248" width="1335" height="543" key="new project wizard" timestamp="1582068637424">
+    <state x="287" y="248" width="1335" height="543" key="new project wizard" timestamp="1587782051095">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="287" y="248" width="1335" height="543" key="new project wizard/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1582068637424" />
+    <state x="287" y="248" key="new project wizard/1920.-10.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587782051095" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
